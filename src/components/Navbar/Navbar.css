@@ -1,0 +1,35 @@
+nav {
+  width: 100vw;
+}
+
+nav ul {
+  display: flex;
+  flex-direction: reverse;
+  align-items: center;
+  padding: 30px;
+  list-style: none;
+}
+
+.menu-item {
+  display: inline-block;
+  padding: 0 15px;
+  text-decoration: none;
+  color: black;
+  margin: 0;
+}
+
+nav ul li a:hover {
+  text-decoration: underline;
+}
+
+button {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  cursor: pointer;
+  padding-left: 15px;
+}
+
+.menu-item-hide {
+  display: none;
+}

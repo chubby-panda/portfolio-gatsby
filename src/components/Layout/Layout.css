@@ -1,0 +1,237 @@
+@import url("https://fonts.googleapis.com/css2?family=La+Belle+Aurore&family=Montserrat:wght@300;400;500;600;700;800&display=swap");
+
+body {
+  font-family: "Montserrat", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h1 {
+  font-size: 2.3rem;
+  letter-spacing: 1.4px;
+}
+
+p {
+  line-height: 1.7;
+  font-size: 0.8rem;
+}
+
+.btn {
+  border: none;
+  outline: none;
+  background-color: black;
+  color: white;
+  padding: 15px 20px;
+  width: fit-content;
+  font-size: 0.8rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.4s;
+}
+
+.btn:hover {
+  background-color: #333;
+}
+
+.btn-white {
+  background-color: white;
+  color: black;
+}
+
+.btn-white:hover {
+  background-color: #ddd;
+}
+
+.signature {
+  font-family: "La Belle Aurore", cursive;
+  font-size: 2.8rem;
+  transform: rotate(-5deg);
+}
+
+ul {
+  margin: 0;
+}
+
+.page-container {
+  margin: 30px;
+  border: 10px solid #e8ebe8;
+  padding: 60px 120px;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px 0 30px 0;
+}
+
+.images {
+  text-align: center;
+  text-transform: capitalize;
+  width: 80vw;
+  margin: 0 auto 10rem auto;
+}
+
+.single-image {
+  border: 3px solid red;
+  padding: 1rem 0;
+}
+
+.single-product {
+  width: 90%;
+  max-width: 1170px;
+  margin: 3rem auto;
+}
+
+#showcase {
+  margin-top: 50px;
+}
+
+#showcase-image-container {
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+}
+
+#showcase-text-container {
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 30px;
+  height: fit-content;
+  width: 300px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-20%);
+}
+
+#skills {
+  margin-top: 150px;
+}
+
+#skills-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 3rem;
+  row-gap: 1rem;
+  margin-top: 2rem;
+}
+
+.skill {
+  display: flex;
+}
+
+.big-number {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #555;
+  width: 20%;
+}
+
+.skill-right {
+  margin-left: 2rem;
+  width: 80%;
+}
+
+.skill-right h3 {
+  margin-top: 0.5rem;
+}
+
+#portfolio {
+  margin-top: 100px;
+}
+
+#portfolio-showcase-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#portfolio-grid {
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 3rem;
+}
+
+#portfolio-list .thumbnail {
+  height: auto;
+  width: 100%;
+  object-fit: cover;
+}
+
+#quote-section {
+  margin-top: 100px;
+  text-align: center;
+}
+
+#quote-section h4 {
+  font-family: "La Belle Aurore", cursive;
+  font-size: 3rem;
+  margin: 0;
+  padding: 0;
+}
+
+#contact {
+  margin-top: 100px;
+}
+
+#contact form {
+  display: flex;
+  flex-direction: column;
+}
+
+#contact form .form-item {
+  display: flex;
+  align-items: flex-start;
+  margin: 1rem 0;
+}
+
+#contact form .form-item label {
+  width: 20%;
+  margin-top: 0.2rem;
+}
+
+#contact form .form-item input,
+#contact form .form-item textarea {
+  width: 80%;
+}
+
+#contact form .form-item input,
+#contact form .form-item textarea {
+  padding: 10px;
+  border: 1px solid #888;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1rem;
+}
+
+#contact form .form-item input:focus,
+#contact form .form-item textarea:focus {
+  outline: none;
+}
+
+#contact form .form-item textarea {
+  height: 200px;
+}
+
+#contact form button {
+  margin-top: 1.5rem;
+  align-self: flex-end;
+}
+
+@media screen and (min-width: 768px) {
+  .single-product {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 2rem;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .images {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 1rem;
+  }
+}
