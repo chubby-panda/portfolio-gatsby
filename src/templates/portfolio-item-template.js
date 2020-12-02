@@ -19,28 +19,30 @@ const PortfolioItem = ({ data }) => {
 
   return (
     <Layout>
-      <h1>{title}</h1>
-      {githubUrl != null && (
-        <a
-          className="btn"
-          href={githubUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Github Repository
-        </a>
-      )}
+      <div className="buttons">
+        {githubUrl != null && (
+          <a
+            className="btn btn-dark"
+            href={githubUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Github Repository
+          </a>
+        )}
 
-      {deployedSite != null && (
-        <a
-          className="btn"
-          href={deployedSite}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Deployed App
-        </a>
-      )}
+        {deployedSite != null && (
+          <a
+            className="btn btn-dark"
+            href={deployedSite}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Deployed App
+          </a>
+        )}
+      </div>
+      <h1>{title}</h1>
 
       <div className="portfolio-item-content">
         {video != null && (

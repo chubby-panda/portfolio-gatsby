@@ -60,6 +60,15 @@ button {
   color: white;
 }
 
+.buttons {
+  display: flex;
+  margin-bottom: 50px;
+}
+
+.buttons a {
+  margin-right: 10px;
+}
+
 ul {
   margin: 0;
 }
