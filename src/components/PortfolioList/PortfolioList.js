@@ -1,7 +1,7 @@
 import React from "react"
-import { useStaticQuery, graphql, Link } from "gatsby"
-import Image from "gatsby-image"
+import { useStaticQuery, graphql } from "gatsby"
 import "./PortfolioList.css"
+import PortfolioCard from "../PortfolioCard/PortfolioCard"
 
 const getPortfolioItems = graphql`
   {
@@ -12,6 +12,9 @@ const getPortfolioItems = graphql`
         createdAt
         description {
           description
+          childMarkdownRemark {
+            html
+          }
         }
         images {
           fluid(maxWidth: 900) {
@@ -24,38 +27,21 @@ const getPortfolioItems = graphql`
   }
 `
 
-const ComponentName = () => {
+const PortfolioList = () => {
   const {
     allContentfulPortfolioItem: { nodes: portfolioItems },
   } = useStaticQuery(getPortfolioItems)
 
-  const getSubString = string => {
-    if (string.length > 150) {
-      string = string.substring(0, 150)
-      return string
-    }
-  }
 
   return (
     <div id="portfolio-list">
       {portfolioItems.map((item, key) => {
         return (
-          <article id="portfolio-item" key={item.id}>
-            <div className="thumbnail">
-              <Image fluid={item.images[0].fluid} alt={item.title} />
-            </div>
-            <div className="portfolio-item-text">
-              <h4>{item.title}</h4>
-              <p>{getSubString(item.description.description)}...</p>
-            </div>
-            <Link className="btn" to="/">
-              Read more
-            </Link>
-          </article>
+          <PortfolioCard item={item} />
         )
       })}
     </div>
   )
 }
 
-export default ComponentName
+export default PortfolioList

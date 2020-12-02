@@ -1,40 +1,9 @@
 import React from "react"
-import { graphql } from "gatsby"
+import { useStaticQuery, graphql } from "gatsby"
 import Layout from "../components/Layout/Layout"
-import Image from "gatsby-image"
-import { Link } from "gatsby"
+import PortfolioCard from "../components/PortfolioCard/PortfolioCard"
 
-const Portfolio = ({ data }) => {
-    const {
-      allContentfulPortfolioItem: { nodes: portfolioItems },
-    } = data
-    return (
-      <Layout>
-        <section>
-          {portfolioItems.map((portfolioItem, key) => {
-            return (
-              <article key={portfolioItem.id}>
-                <div>
-                    {portfolioItem.images.map((image, key) => {
-                        return (
-                            <Image fluid={image.fluid} alt={portfolioItem.title} />
-                        )
-                    })}
-                </div>
-                <h3>
-                  {portfolioItem.title}
-                  <span>${portfolioItem.createdAt}</span>
-                </h3>
-                <Link to={`${portfolioItem.slug}`}>More details</Link>
-              </article>
-            )
-          })}
-        </section>
-      </Layout>
-    )
-  }
-
-export const query = graphql`
+const getPortfolioItems = graphql`
   {
     allContentfulPortfolioItem {
       nodes {
@@ -43,9 +12,12 @@ export const query = graphql`
         createdAt
         description {
           description
+          childMarkdownRemark {
+            html
+          }
         }
         images {
-          fluid {
+          fluid(maxWidth: 900) {
             ...GatsbyContentfulFluid
           }
         }
@@ -54,5 +26,24 @@ export const query = graphql`
     }
   }
 `
+
+const Portfolio = ({ data }) => {
+  const {
+    allContentfulPortfolioItem: { nodes: portfolioItems },
+  } = useStaticQuery(getPortfolioItems)
+
+
+  return (
+    <Layout>
+      <div id="portfolio-page">
+        {portfolioItems.map((item, key) => {
+          return (
+            <PortfolioCard item={item} />
+          )
+        })}
+      </div>
+    </Layout>
+  )
+}
 
 export default Portfolio

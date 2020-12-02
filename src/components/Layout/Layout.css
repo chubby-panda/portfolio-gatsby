@@ -12,41 +12,52 @@ h1 {
   letter-spacing: 1.4px;
 }
 
-p {
+p,
+label,
+a,
+li,
+button {
   line-height: 1.7;
-  font-size: 0.8rem;
+  font-size: 1rem;
 }
 
 .btn {
-  border: none;
+  border: 2px solid white;
   outline: none;
-  background-color: black;
+  background-color: transparent;
   color: white;
-  padding: 15px 20px;
+  padding: 10px 20px;
   width: fit-content;
-  font-size: 0.8rem;
   text-decoration: none;
   cursor: pointer;
   transition: background-color 0.4s;
 }
 
 .btn:hover {
-  background-color: #333;
-}
-
-.btn-white {
   background-color: white;
-  color: black;
+  color: #333;
 }
 
-.btn-white:hover {
-  background-color: #ddd;
+.btn-dark {
+  border: 2px solid #333;
+  color: #333;
 }
 
-.signature {
-  font-family: "La Belle Aurore", cursive;
-  font-size: 2.8rem;
-  transform: rotate(-5deg);
+.btn-dark:hover {
+  background-color: #333;
+  color: white;
+}
+
+.btn-dark-solid {
+  border: 2px solid #333;
+  background-color: #333;
+  color: white;
+}
+
+.btn-dark-solid:hover {
+  opacity: 0.9;
+  background-color: #333;
+  color: white;
 }
 
 ul {
@@ -55,8 +66,8 @@ ul {
 
 .page-container {
   margin: 30px;
-  border: 10px solid #e8ebe8;
-  padding: 60px 120px;
+  /* border: 10px solid #e8ebe8; */
+  padding: 10px 120px;
 }
 
 footer {
@@ -74,7 +85,6 @@ footer {
 }
 
 .single-image {
-  border: 3px solid red;
   padding: 1rem 0;
 }
 
@@ -86,28 +96,25 @@ footer {
 
 #showcase {
   margin-top: 50px;
+  display: flex;
+  flex-direction: row-reverse;
+  background-color: #3d405b;
+  padding: 20px;
 }
 
 #showcase-image-container {
-  width: 100%;
-  margin: 0 auto;
-  position: relative;
+  width: 60%;
 }
 
 #showcase-text-container {
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: #3d405b;
   color: white;
   padding: 30px;
-  height: fit-content;
-  width: 300px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translateY(-20%);
+  margin: auto;
 }
 
 #skills {
-  margin-top: 150px;
+  margin-top: 100px;
 }
 
 #skills-container {
@@ -120,13 +127,28 @@ footer {
 
 .skill {
   display: flex;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+}
+
+.skill:hover {
+  transform: scale(1.1);
+}
+
+.skill:hover .big-number h2 {
+  color: #84a59d;
+  animation: spin 1s forwards;
 }
 
 .big-number {
+  width: 20%;
+  transition: all 0.5s ease-in-out;
+}
+
+.big-number h2 {
   font-size: 3rem;
   font-weight: 800;
   color: #555;
-  width: 20%;
 }
 
 .skill-right {
@@ -155,69 +177,33 @@ footer {
   column-gap: 3rem;
 }
 
-#portfolio-list .thumbnail {
-  height: auto;
-  width: 100%;
-  object-fit: cover;
+.portfolio-item-image {
+  width: 350px;
 }
 
-#quote-section {
-  margin-top: 100px;
-  text-align: center;
-}
-
-#quote-section h4 {
-  font-family: "La Belle Aurore", cursive;
-  font-size: 3rem;
-  margin: 0;
-  padding: 0;
-}
-
-#contact {
-  margin-top: 100px;
-}
-
-#contact form {
+.portfolio-item-content {
   display: flex;
   flex-direction: column;
 }
 
-#contact form .form-item {
-  display: flex;
-  align-items: flex-start;
-  margin: 1rem 0;
+.portfolio-item-content-text {
+  margin-right: 100px;
+  text-align: justify;
 }
 
-#contact form .form-item label {
-  width: 20%;
-  margin-top: 0.2rem;
+.portfolio-item-content-text pre {
+  overflow-x: scroll;
+}
+.portfolio-item-content-text code {
+  word-wrap: normal;
+  overflow-wrap: break-word;
+  overflow-x: scroll;
 }
 
-#contact form .form-item input,
-#contact form .form-item textarea {
-  width: 80%;
-}
-
-#contact form .form-item input,
-#contact form .form-item textarea {
-  padding: 10px;
-  border: 1px solid #888;
-  font-family: "Montserrat", sans-serif;
-  font-size: 1rem;
-}
-
-#contact form .form-item input:focus,
-#contact form .form-item textarea:focus {
-  outline: none;
-}
-
-#contact form .form-item textarea {
-  height: 200px;
-}
-
-#contact form button {
-  margin-top: 1.5rem;
-  align-self: flex-end;
+#portfolio-page {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 4rem;
 }
 
 @media screen and (min-width: 768px) {
@@ -233,5 +219,30 @@ footer {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     column-gap: 1rem;
+  }
+}
+
+@-moz-keyframes spin {
+  from {
+    -moz-transform: rotate(0deg);
+  }
+  to {
+    -moz-transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes spin {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
   }
 }

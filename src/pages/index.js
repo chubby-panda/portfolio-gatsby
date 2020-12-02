@@ -1,12 +1,13 @@
 import React from "react"
-import { useStaticQuery, graphql, Link } from "gatsby"
+import { Link, graphql, useStaticQuery } from "gatsby"
 import Image from "gatsby-image"
 import Layout from "../components/Layout/Layout"
 import PortfolioList from "../components/PortfolioList/PortfolioList"
+import ContactForm from "../components/ContactForm/ContactForm"
 
 const getImage = graphql`
   {
-    fluid: file(relativePath: { eq: "portfolio-showcase.jpg" }) {
+    fluid: file(relativePath: { eq: "portrait.jpg" }) {
       childImageSharp {
         fluid(maxWidth: 1200, grayscale: false) {
           ...GatsbyImageSharpFluid_withWebp_tracedSVG
@@ -16,7 +17,7 @@ const getImage = graphql`
   }
 `
 
-export default function Home() {
+const Home = () => {
   const data = useStaticQuery(getImage)
 
   return (
@@ -30,21 +31,18 @@ export default function Home() {
           <Image fluid={data.fluid.childImageSharp.fluid}></Image>
         </div>
         <div id="showcase-text-container">
-          <small>WEB DEVELOPER</small>
           <h1>Hi, I'm Sophie</h1>
           <p>
-            And I'm an enthusiastic web developer currently enrolled in the She
-            Codes Plus program in Perth, with experience in React.js, CSS,
-            SASS/SCSS, JavaScript, Python, REST APIs, AWS and more. I have a
-            background in content writing and foreign language communication.
-            I'm passionate about high-quality UX, finding simple solutions to
-            complex problems, and building beautiful websites.
+            Junior Developer and Great Ape at Bonobo Labs, and She Codes Plus
+            2020 graduate, with experience in JavaScript, React, Node, Python,
+            Django, AWS, SCSS and more.
           </p>
           <p>
-            I'm currently seeking opportunities in the Perth Metropolitan area
-            and would love to speak with you about your next project.
+            Feel free to explore the portfolio section of this site, and if
+            you're at the showcase right now, all of my She Codes Plus projects
+            are already open in the browser.
           </p>
-          <p className="signature">SPhoon</p>
+          <p>Thanks for stopping by!</p>
         </div>
       </div>
 
@@ -52,46 +50,53 @@ export default function Home() {
         <h2>Skills</h2>
         <div id="skills-container">
           <div className="skill">
-            <div className="big-number">01</div>
+            <div className="big-number">
+              <h2>01</h2>
+            </div>
             <div className="skill-right">
               <h3>Frontend</h3>
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Consequatur omnis obcaecati velit libero aliquid. Fugiat in
-                dicta aut quasi nesciunt?
+                Experience with modern HTML and CSS, SCSS/SASS, JavaScript, as
+                well as frontend frameworks like React and Gatsby, and Google
+                APIs.
               </p>
             </div>
           </div>
           <div className="skill">
-            <div className="big-number">02</div>
+            <div className="big-number">
+              <h2>02</h2>
+            </div>
             <div className="skill-right">
               <h3>Backend</h3>
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Consequatur omnis obcaecati velit libero aliquid. Fugiat in
-                dicta aut quasi nesciunt?
+                REST APIs using Django's REST framework, storage solutions with
+                AWS S3, testing with Postman/Insomnia, Git version control
               </p>
             </div>
           </div>
           <div className="skill">
-            <div className="big-number">03</div>
+            <div className="big-number">
+              <h2>03</h2>
+            </div>
             <div className="skill-right">
               <h3>Content</h3>
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Consequatur omnis obcaecati velit libero aliquid. Fugiat in
-                dicta aut quasi nesciunt?
+                Social media marketing experience through Offspring Magazine,
+                content published and distributed nationally throughout
+                Australia
               </p>
             </div>
           </div>
           <div className="skill">
-            <div className="big-number">04</div>
+            <div className="big-number">
+              <h2>04</h2>
+            </div>
             <div className="skill-right">
               <h3>Languages</h3>
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Consequatur omnis obcaecati velit libero aliquid. Fugiat in
-                dicta aut quasi nesciunt?
+                Honour's degree in Applied Languages, with German, Spanish and
+                Japanese. Worked and lived in a German/Spanish speaking
+                environment.
               </p>
             </div>
           </div>
@@ -101,51 +106,15 @@ export default function Home() {
       <div id="portfolio">
         <div id="portfolio-showcase-header">
           <h2>Portfolio</h2>
-          <Link className="btn" to="portfolio">
+          <Link className="btn btn-dark" to="portfolio">
             View all
           </Link>
         </div>
         <PortfolioList />
       </div>
-
-      {/* <div id="quote-section">
-        <div id="quote">
-          <h4>&#x201D;</h4>
-          <p>
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto
-            nesciunt dolorum alias provident aut unde eveniet saepe. Sint
-            perspiciatis iste neque consequuntur eum omnis corporis!"
-          </p>
-          <p className="bold">Random Name</p>
-          <p className="subtext">Job title</p>
-        </div>
-        <div id="quote-images">
-          <div id="quote-image-container">Image here</div>
-          <div id="quote-image-container">Image here</div>
-          <div id="quote-image-container">Image here</div>
-        </div>
-      </div> */}
-
-      <div id="contact">
-        <h2>Contact</h2>
-        <form method="post" action="https://formspree.io/f/mgepyzzd">
-          <div className="form-item">
-            <label htmlFor="name">Name</label>
-            <input id="name" type="text" name="name" />
-          </div>
-          <div className="form-item">
-            <label htmlFor="email">Email</label>
-            <input id="email" type="email" name="_replyto" />
-          </div>
-          <div className="form-item">
-            <label htmlFor="message">Message</label>
-            <textarea id="message" type="text" name="message" />
-          </div>
-          <button className="btn" type="submit">
-            Send
-          </button>
-        </form>
-      </div>
+      <ContactForm />
     </Layout>
   )
 }
+
+export default Home

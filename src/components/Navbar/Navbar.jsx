@@ -1,107 +1,54 @@
 import React, { useState } from "react"
 import { Link } from "gatsby"
 import { AnchorLink } from "gatsby-plugin-anchor-links"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons"
 import "./Navbar.css"
 
+const styles = {
+  transition: "all 0.5s ease-in-out",
+}
+
 const Navbar = () => {
-  const [menuVisible, setMenuVisible] = useState(false)
+  const [menuStyles, setMenuStyles] = useState({
+    opacity: 0,
+    scale: 0,
+  })
 
   const showMenu = e => {
-    if (menuVisible) {
-      setMenuVisible(false)
-    } else {
-      setMenuVisible(true)
-    }
+    menuStyles.opacity > 0
+      ? setMenuStyles({ opacity: 0, transform: "-10px" })
+      : setMenuStyles({ opacity: 1, transform: "0" })
   }
 
   return (
     <nav id="navbar">
-      <ul>
+      <button onClick={showMenu}>Menu</button>
+      <ul
+        style={{
+          ...styles,
+          opacity: menuStyles.opacity,
+          transform: "translateX(" + menuStyles.transform + ")",
+        }}
+      >
         <li>
-          <button onClick={showMenu}>
-            {menuVisible ? (
-              <FontAwesomeIcon icon={faTimes} size="2x" className="icon" />
-            ) : (
-              <FontAwesomeIcon icon={faBars} size="2x" className="icon" />
-            )}
-          </button>
-        </li>
-        <li>
-          <Link
-            className={menuVisible ? "menu-item" : "menu-item menu-item-hide"}
-            to="/"
-          >
+          <Link className="menu-item" to="/">
             Home
           </Link>
         </li>
-        <small className={menuVisible ? null : "menu-item-hide"}>|</small>
         <li>
-          <AnchorLink
-            to="/#skills"
-            title="Skills"
-            className={menuVisible ? "menu-item" : "menu-item menu-item-hide"}
-          >
+          <AnchorLink to="/#skills" title="Skills" className="menu-item">
             Skills
           </AnchorLink>
         </li>
-        <small className={menuVisible ? null : "menu-item-hide"}>|</small>
         <li>
-          <AnchorLink
-            to="/#portfolio"
-            title="Portfolio"
-            className={menuVisible ? "menu-item" : "menu-item menu-item-hide"}
-          >
+          <AnchorLink to="/#portfolio" title="Portfolio" className="menu-item">
             Portfolio
           </AnchorLink>
         </li>
-        <small className={menuVisible ? null : "menu-item-hide"}>|</small>
         <li>
-          <AnchorLink
-            to="/#contact"
-            title="Contact"
-            className={menuVisible ? "menu-item" : "menu-item menu-item-hide"}
-          >
+          <AnchorLink to="/#contact" title="Contact" className="menu-item">
             Contact
           </AnchorLink>
         </li>
-        {/* <small className={menuVisible ? null : "menu-item-hide"}>|</small>
-        <li>
-          <Link
-            className={menuVisible ? "menu-item" : "menu-item menu-item-hide"}
-            to="/blog/"
-          >
-            Blog
-          </Link>
-        </li>
-        <small className={menuVisible ? null : "menu-item-hide"}>|</small>
-        <li>
-          <Link
-            className={menuVisible ? "menu-item" : "menu-item menu-item-hide"}
-            to="/products/"
-          >
-            Products
-          </Link>
-        </li>
-        <small className={menuVisible ? null : "menu-item-hide"}>|</small>
-        <li>
-          <Link
-            className={menuVisible ? "menu-item" : "menu-item menu-item-hide"}
-            to="/examples/"
-          >
-            Examples
-          </Link>
-        </li>
-        <small className={menuVisible ? null : "menu-item-hide"}>|</small>
-        <li>
-          <Link
-            className={menuVisible ? "menu-item" : "menu-item menu-item-hide"}
-            to="/images/"
-          >
-            Images
-          </Link>
-        </li> */}
       </ul>
     </nav>
   )

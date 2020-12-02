@@ -4,21 +4,3 @@
   column-gap: 4rem;
   margin-top: 3rem;
 }
-
-#portfolio-list h4 {
-  font-size: relative;
-  margin-bottom: 0;
-}
-
-#portfolio-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-bottom: 20px;
-}
-
-.portfolio-item-text {
-  padding: 30px 15px;
-  text-align: center;
-  height: 150px;
-}

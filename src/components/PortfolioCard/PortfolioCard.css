@@ -1,0 +1,34 @@
+#portfolio-card h4 {
+  font-size: 1.5rem;
+}
+
+a#portfolio-card {
+  text-decoration: none;
+  padding-bottom: 30px;
+  background-color: #e0e1e6;
+  transition: all 0.2s ease-in-out;
+  margin-bottom: 50px;
+}
+
+#portfolio-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #333;
+  cursor: pointer;
+}
+
+a#portfolio-card:hover {
+  transform: scale(1.01);
+}
+
+.portfolio-item-text {
+  padding: 20px 30px;
+  text-align: center;
+}
+
+.thumbnail {
+  height: auto;
+  width: 100%;
+  object-fit: cover;
+}
